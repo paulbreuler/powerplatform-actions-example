@@ -14,10 +14,6 @@ on:
         required: true
         default: 'CUCore'
 
-env:
-   if: ${{ env.GITHUB_EVENT_NAME == 'repository_dispatch' }}
-   SOLUTION_NAME: 'TEST'
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
