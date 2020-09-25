@@ -63,15 +63,15 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: download artifacts
+        if: s
         uses: actions/download-artifact@v2
         with:
           path: artifacts/solutions
           
       - name: Move files
         run: |
-           mv cucore_managed/*.zip .
-           mv cucore_unmanaged/*.zip .
-        working-directory: artifacts/solutions
+           mv artifacts/solutions/cucore_managed/*.zip artifacts/solutions
+           mv artifacts/solutions/cucore_unmanaged/*.zip artifacts/solutions
         
       - name: unpack-solution action
         uses: microsoft/powerplatform-actions/unpack-solution@v0.1.7
