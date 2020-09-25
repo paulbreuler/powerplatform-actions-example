@@ -70,7 +70,13 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: artifacts/solutions
- 
+     
+      - name: Move files
+        run: |
+           mv cucore_managed/*.zip .
+           mv cucore_unmanaged/*.zip .
+        working-directory: artifacts/solutions
+        
       - name: unpack-solution action
         uses: microsoft/powerplatform-actions/unpack-solution@v0.1.7
         with:
