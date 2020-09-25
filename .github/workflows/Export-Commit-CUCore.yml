@@ -28,7 +28,7 @@ jobs:
 
       - name: Set input based on event type
         env:
-           input: ${{ github.event.input.name }}
+           input: ${{ github.event.inputs.name }}
            client_payload: ${{ github.event.client_payload.name }}
         run: if($env.GITHUB_EVENT_NAME -eq 'repository_dispatch') {write-host $env:SOLUTION_NAME = $client_payload } else {write-host $env:SOLUTION_NAME = $input }
 
