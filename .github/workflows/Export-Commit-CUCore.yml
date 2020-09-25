@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set input based on event type
-        run: if(env.GITHUB_EVENT_NAME == 'repository_dispatch') {write-host $env:SOLUTION_NAME = github.event.client_payload.name} else {write-host $env:SOLUTION_NAME = github.event.input.name
+        run: if($env.GITHUB_EVENT_NAME == 'repository_dispatch') {write-host $env:SOLUTION_NAME = github.event.client_payload.name} else {write-host $env:SOLUTION_NAME = github.event.input.name
 
       - name: export-solution action
         uses: microsoft/powerplatform-actions/export-solution@v0.1.7
