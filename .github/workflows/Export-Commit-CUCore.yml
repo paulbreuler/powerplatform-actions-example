@@ -67,10 +67,6 @@ jobs:
         with:
           path: artifacts/solutions
           
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: artifacts/solutions
-     
       - name: Move files
         run: |
            mv cucore_managed/*.zip .
