@@ -6,13 +6,11 @@ name: Manual Export, unpack, and commit CUCore
 # events but only for the main branch
 on:
    repository_dispatch: 
-    types: [ export ]
+    types: [ export_cucore]
    workflow_dispatch:
-    inputs:
-      DISPATCH_SOLUTION_NAME:
-        description: 'Solution to export'
-        required: true
-        default: 'CUCore'
+
+env: 
+   SOLUTION_NAME: CUCore
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -25,9 +23,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: Set input based on event type
-        run: if( $env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') { write-host $env:SOLUTION_NAME = "${{ github.event.inputs.DISPATCH_SOLUTION_NAME }}" } else {  write-host $env:SOLUTION_NAME = "${{ github.event.client_payload.name" }}  }
 
       - name: export-solution action
         uses: microsoft/powerplatform-actions/export-solution@v0.1.7
