@@ -9,7 +9,7 @@ on:
     types: [ export ]
    workflow_dispatch:
     inputs:
-      SOLUTION_NAME:
+      DISPATCH_SOLUTION_NAME:
         description: 'Solution to export'
         required: true
         default: 'CUCore'
@@ -27,8 +27,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set input based on event type
-        run: if( $env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') { write-host "Hello ${{ github.event.inputs.SOLUTION_NAME }}!" }
-
+        run: if( $env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') { write-host $env:SOLUTION_NAME = $env:${{ github.event.inputs.DISPATCH_SOLUTION_NAME }}!" }
 
       - name: export-solution action
         uses: microsoft/powerplatform-actions/export-solution@v0.1.7
