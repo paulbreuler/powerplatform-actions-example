@@ -66,13 +66,17 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           path: artifacts/solutions
-
+          
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: artifacts/solutions
+ 
       - name: unpack-solution action
         uses: microsoft/powerplatform-actions/unpack-solution@v0.1.7
         with:
           solution-file: artifacts/solutions/${{ env.SOLUTION_NAME }}.zip
           solution-folder: out/solutions/${{ env.SOLUTION_NAME }}
-          solution-type: 'Unmanaged'
+          solution-type: 'both'
           overwrite-files: true
        
       - uses: actions/checkout@v2
