@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set input based on event type
-        run: if( $env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') { write-host $env:SOLUTION_NAME = $env:${{ github.event.inputs.DISPATCH_SOLUTION_NAME }} }
+        run: if( $env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') { write-host $env:SOLUTION_NAME = ${{ github.event.inputs.DISPATCH_SOLUTION_NAME }} } else {  write-host $env:SOLUTION_NAME = ${{ github.event.client_payload.name }} 
 
       - name: export-solution action
         uses: microsoft/powerplatform-actions/export-solution@v0.1.7
