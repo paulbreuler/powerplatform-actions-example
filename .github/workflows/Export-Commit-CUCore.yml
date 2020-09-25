@@ -30,7 +30,7 @@ jobs:
         env:
            input: ${{ github.event.inputs.name }}
            client_payload: ${{ github.event.client_payload.name }}
-        run: if($env.GITHUB_EVENT_NAME -eq 'repository_dispatch') {write-host $env:SOLUTION_NAME = $client_payload } else {write-host $env:SOLUTION_NAME = $input }
+        run: if($env.GITHUB_EVENT_NAME -eq 'repository_dispatch') {write-host $env:SOLUTION_NAME = ${{ github.event.client_payload.name }} } else {write-host $env:SOLUTION_NAME =  ${{ github.event.inputs.name }}  }
 
       - name: export-solution action
         uses: microsoft/powerplatform-actions/export-solution@v0.1.7
